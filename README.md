@@ -101,3 +101,6 @@ Using environment "development".
 == 20181123124145-create-actualities-tag: migrating =======
 == 20181123124145-create-actualities-tag: migrated (0.020s)
 ```
+
+TODO
+Relationner les modèle, creer des seed et tout tester
