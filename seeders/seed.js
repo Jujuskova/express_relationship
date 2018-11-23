@@ -1,6 +1,11 @@
 const {createProfilesWithUser} = require('./profileUserSeed');
-const {createActualities, getActualityAuthor, getActualitiesByAuthorId, addTagsToActuality} = require('./actualitiesSeed');
 const {createTags} = require('./tagsSeed');
+const {
+  createActualities, 
+  getActualityAuthor, 
+  getActualitiesByAuthorId, 
+  addTagsToActuality
+} = require('./actualitiesSeed');
 
 // createProfilesWithUser(100); // Change the num to select numbers of profiles/users creation
 // createActualities(10, 6); // firstArgument is numbers of actualities will create, secondArgument is id of author

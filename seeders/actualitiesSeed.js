@@ -2,10 +2,8 @@
 const fakeDatas = require('faker');
 const models = require('../models');
 const User = models.User;
-const Profile = models.Profile;
 const Actuality = models.Actuality;
-const Tag = models.Tag;
-const ActualitiesTag = models.ActualitiesTag;
+
 module.exports = {
   createActualities: (numberActu, userId) => {
     let counter = 0;
