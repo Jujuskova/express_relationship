@@ -1,15 +1,9 @@
-// fakeDatas is used to create seeds see doc here => http://marak.github.io/faker.js/
-const fakeDatas = require('faker');
-const models = require('../models');
-const User = models.User;
-const Profile = models.Profile;
-const Actuality = models.Actuality;
-const Tag = models.Tag;
-const ActualitiesTag = models.ActualitiesTag;
+const {createProfilesWithUser} = require('./profileUserSeed');
+const {createActualities, getActualityAuthor, getActualitiesByAuthorId, addTagsToActuality} = require('./actualitiesSeed');
+const {createTags} = require('./tagsSeed');
 
-const createProfilesWithUser = require('./profileUserSeed').createProfilesWithUser
-
-createProfilesWithUser(10) // Change the num to select numbers of profiles/users creation
-
-
-
+// createProfilesWithUser(100); // Change the num to select numbers of profiles/users creation
+// createActualities(10, 6); // firstArgument is numbers of actualities will create, secondArgument is id of author
+// getActualityAuthor(1); // Get an author (user) by actuality id
+// getActualitiesByAuthorId(8); // Pass an authorId and get it actualities
+// createTags(40, [1, 2, 3]); // Create 4 new Tags and links all with Actuality 1, 2 and 3 (id)

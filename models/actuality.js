@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER
   }, {});
   Actuality.associate = function(models) {
-    // associations can be defined here
+    Actuality.belongsTo(models.User, {foreignKey: 'userId', as: 'author'})
+    Actuality.belongsToMany(models.Tag, {through: 'ActualitiesTags', foreignKey: 'actualityId', as: 'tags'})
   };
   return Actuality;
 };

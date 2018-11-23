@@ -14,7 +14,7 @@ module.exports = {
         aboutMe: fakeDatas.lorem.sentence(),
         user: {
           email: fakeDatas.internet.email(),
-          password: 'test1234',
+          password: fakeDatas.internet.password(),
         }
       }, {
       include: 'user'

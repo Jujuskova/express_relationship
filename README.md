@@ -102,5 +102,53 @@ Using environment "development".
 == 20181123124145-create-actualities-tag: migrated (0.020s)
 ```
 
-TODO
-Relationner les modèle, creer des seed et tout tester
+### Configure models relationships
+Setup associations into models
+- Profile.js 
+```javascript
+Profile.belongsTo(models.User, {foreignKey: 'userId', as: 'user'})
+```
+- User.js
+```javascript
+User.hasMany(models.Actuality, {as: 'actualities'})
+```
+- Actuality.js
+```javascript
+Actuality.belongsTo(models.User, {foreignKey: 'userId', as: 'author'})
+Actuality.belongsToMany(models.Tag, {through: 'ActualitiesTags', foreignKey: 'actualityId', as: 'tags'})
+```
+- Tag.js
+```javascript
+Tag.belongsToMany(models.Actuality, {through: 'ActualitiesTags', foreignKey: 'tagId', as: 'actualities'})
+```
+- ActualitiesTags.js
+```javascript
+ActualitiesTag.belongsTo(models.Actuality, {foreignKey: 'actualityId', as: 'actuality'})
+ActualitiesTag.belongsTo(models.Tag, {foreignKey: 'tagId', as: 'tag'})
+```
+
+## Seeds
+uncomment and execute the seeds between each line from 14 to 18 in the seed.js file (line by line)
+
+EXAMPLE : 
+```javascript
+createProfilesWithUser(100); // Change the num to select numbers of profiles/users creation
+// createActualities(10, 6); // firstArgument is numbers of actualities will create, secondArgument is id of author
+// getActualityAuthor(1); // Get an author (user) by actuality id
+// getActualitiesByAuthorId(8); // Pass an authorId and get it actualities
+// createTags(40, [1, 2, 3]); // Create 4 new Tags and links all with Actuality 1, 2 and 3 (id)
+```
+```shell
+node seeders/seed.js
+```
+```javascript
+// createProfilesWithUser(100); // Change the num to select numbers of profiles/users creation
+createActualities(10, 6); // firstArgument is numbers of actualities will create, secondArgument is id of author
+// getActualityAuthor(1); // Get an author (user) by actuality id
+// getActualitiesByAuthorId(8); // Pass an authorId and get it actualities
+// createTags(40, [1, 2, 3]); // Create 4 new Tags and links all with Actuality 1, 2 and 3 (id)
+```
+```shell
+node seeders/seed.js
+```
+...
